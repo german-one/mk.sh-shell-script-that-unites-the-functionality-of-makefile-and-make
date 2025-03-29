@@ -92,7 +92,7 @@ app=$appdir/$app_name
 ) && [ -n "$do_run$do_memchk" ] && (
   # run w/ or w/o memory check
   run=$app$n$app_args$n$*
-  [ -n "$do_memchk" ] && run=valgrind$n-s$n$run
+  [ -n "$do_memchk" ] && run=valgrind$n-s$n--leak-check=full$n--track-origins=yes$n$run
   (set -xv; $run)
   echo "$n '$app' returned: $?$n" >&2
 )
